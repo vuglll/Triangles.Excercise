@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Linq;
 
 namespace Triangles.Excercise
@@ -10,33 +11,49 @@ namespace Triangles.Excercise
         public List<Vertex2D> Vertices { get; set; }
         private string RowIdentifier { get; set; }
         private string ColumnIdentifier { get; set; }
+        public bool IsValid { get; set; }
 
         public TriangleInfo(string rowId, int columnId, int sideLenght = 100)
         {
-
             Vertices = new List<Vertex2D>();
+            if (!ValidateInput(rowId, columnId))
+            {
+                this.IsValid = false;
+            }
+            else
+            {
 
-            // calculate 0-base row number
-            int row = rowId.ToUpper().ToCharArray().FirstOrDefault() - 'A';
+                // calculate 0-base row number
+                int row = rowId.ToUpper().ToCharArray().FirstOrDefault() - 'A';
 
-            RowIdentifier = rowId;
-            ColumnIdentifier = columnId.ToString();
+                RowIdentifier = rowId;
+                ColumnIdentifier = columnId.ToString();
 
-            // calculate 0-base column number
-            columnId--;
+                // calculate 0-base column number
+                columnId--;
 
-            int column = columnId / 2;
-            int columnPos = columnId % 2;
-
-
-            Vertex2D A = new Vertex2D() { Y = row * sideLenght, X = column * sideLenght };
-            Vertex2D B = new Vertex2D() { Y = (row + 1) * sideLenght, X = (column + 1) * sideLenght };
-            Vertex2D C = new Vertex2D() { Y = (columnPos == 0) ? ((row + 1) * sideLenght) : row * sideLenght, X = (columnPos == 0) ? (column * sideLenght) : (column + 1) * sideLenght };
+                int column = columnId / 2;
+                int columnPos = columnId % 2;
 
 
-            Vertices.Add(A);
-            Vertices.Add(B);
-            Vertices.Add(C);
+                Vertex2D A = new Vertex2D() { Y = row * sideLenght, X = column * sideLenght };
+                Vertex2D B = new Vertex2D() { Y = (row + 1) * sideLenght, X = (column + 1) * sideLenght };
+                Vertex2D C = new Vertex2D() { Y = (columnPos == 0) ? ((row + 1) * sideLenght) : row * sideLenght, X = (columnPos == 0) ? (column * sideLenght) : (column + 1) * sideLenght };
+
+
+                Vertices.Add(A);
+                Vertices.Add(B);
+                Vertices.Add(C);
+                this.IsValid = true;
+            }
+        }
+
+        private bool ValidateInput(string rowId, int columnId)
+        {
+            string ident = rowId.ToUpper() + columnId.ToString();
+            var reg = new Regex(@"^([A-F])([1-9]|1[012])$");
+            return reg.IsMatch(ident);
+            
         }
 
         public TriangleInfo(int v1x, int v1y, int v2x, int v2y, int v3x, int v3y, int sideLenght = 100)

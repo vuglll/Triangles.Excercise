@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triangles.Excercise", "Triangles.Excercise\Triangles.Excercise.csproj", "{50F2052D-0A9F-4BF7-8612-E93176D503B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Triangle.Excercise.Tests", "Triangle.Excercise.Tests\Triangle.Excercise.Tests.csproj", "{25B81D34-C870-4E12-88C5-3DB1162AF9A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{50F2052D-0A9F-4BF7-8612-E93176D503B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50F2052D-0A9F-4BF7-8612-E93176D503B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50F2052D-0A9F-4BF7-8612-E93176D503B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25B81D34-C870-4E12-88C5-3DB1162AF9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B81D34-C870-4E12-88C5-3DB1162AF9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B81D34-C870-4E12-88C5-3DB1162AF9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B81D34-C870-4E12-88C5-3DB1162AF9A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
